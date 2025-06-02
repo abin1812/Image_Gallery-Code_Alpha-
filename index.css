@@ -1,0 +1,362 @@
+/* Common Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #0f8a7d, #2c5364);
+  color: white;
+  min-height: 100vh;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+body.dark {
+  background: #121212;
+  color: #f0f0f0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+header h1 {
+  font-size: 2rem;
+}
+
+#darkModeToggle {
+  background: none;
+  border: 2px solid white;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Folders Grid */
+.folders {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 2rem;
+  justify-content: center;
+}
+
+.folder {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 3rem 2rem; /* increased padding */
+  border-radius: 20px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1.6rem; /* slightly bigger text */
+  transition: transform 0.3s ease, background 0.3s ease;
+  min-height: 170px; /* added height to stretch vertically */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.folder:hover {
+  transform: scale(1.08);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.hidden {
+  display: none;
+}
+
+#backToFolders {
+  margin: 1rem 2rem;
+  padding: 0.5rem 1rem;
+  background: #555;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.image-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 12px;
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 500px; /* FIXED HEIGHT */
+  width: 100%;   /* FULL WIDTH OF GRID */
+  overflow: hidden;
+}
+
+
+.image-card:hover {
+  transform: translateY(-5px);
+}
+
+.image-card img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;  /* MAKES IMAGE FIT PROPERLY */
+  border-radius: 8px;
+}
+
+.bottom-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.action-btn {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid white;
+  border-radius: 16px;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.action-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+/* Favorites mode layout */
+.image-grid.favorites-mode {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  justify-items: center;
+}
+
+/* Default (full folder) layout */
+.image-grid:not(.favorites-mode) {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.image-grid.favorites-mode .image-card {
+  max-width: 300px;
+}
+#imagePreview {
+  text-align: center;
+  padding: 2rem;
+}
+
+#imagePreview img {
+  max-width: 80%;
+  max-height: 60vh;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  object-fit: contain;
+}
+
+.preview-icons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 2rem;
+}
+
+.preview-icons .icon {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.preview-icons .icon:hover {
+  transform: scale(1.2);
+}
+#imagePreview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+#imagePreview.hidden {
+  display: none;
+}
+
+#previewImg {
+  max-width: 100%;
+  max-height: 100vh;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+#imagePreview .icons {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+}
+
+#imagePreview .icon {
+  font-size: 28px;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+#imagePreview .icon:hover {
+  transform: scale(1.2);
+  color: #ffd700;
+}
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 10, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #7a641c;
+  width: 300px;
+  box-shadow: 0 0 10px rgba(122, 100, 28, 0.3);
+}
+
+.modal-content h3 {
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #7a641c;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-buttons button {
+  background-color: #7a641c;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+#hiddenFolderSection {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  gap: 20px;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 80px);
+  overflow-y: auto;
+  background: #005c5c;
+  z-index: 1001;
+}
+
+#hiddenFolderSection.show {
+  display: flex;
+}
+
+#backToFoldersFromHidden {
+  background-color: #3e3e3e;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  cursor: pointer;
+  margin: 20px;
+  transition: background-color 0.3s ease;
+}
+
+#backToFoldersFromHidden:hover {
+  background-color: #5a5a5a;
+}
+#deletedSection {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  gap: 20px;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 80px);
+  overflow-y: auto;
+  background: #4a0000;
+  z-index: 1001;
+}
+
+#deletedSection.show {
+  display: flex;
+}
+
+#backFromDeleted {
+  background-color: #6c2c2c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 20px;
+}
+
+.recoverBtn {
+  margin-top: 10px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: #28a745;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+}

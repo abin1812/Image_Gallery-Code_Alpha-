@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Image Gallery</title>
+  <link rel="icon" type="image/png" href="images/logo.png" />
+  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+  <script defer src="index.js"></script>
+</head>
+<body>
+  <header>
+    <h1>🖼️ Image Gallery</h1>
+    <button id="darkModeToggle">🌙</button>
+  </header>
+
+  <main>
+    <!-- Folder View -->
+    <section class="folders" id="folderView">
+      <div class="folder" data-folder="Nature">🌿 Nature</div>
+    <div class="folder" data-folder="Monuments">🏛️ Monuments</div>
+      <div class="folder" data-folder="Animals">🐾 Animals</div>
+      <div class="folder" data-folder="Gadgets">💻 Gadgets</div>
+      <div class="folder" data-folder="Food">🍔 Food</div>
+      <div class="folder" data-folder="Sports">🏀 Sports</div>
+      <div class="folder" data-folder="Quotes">💬 Quotes</div>
+      <div class="folder" data-folder="Painting">🖌️ Painting</div>
+      <div class="folder" data-folder="Aesthetic photos">🎇 Aesthetic</div>
+    </section>
+    <!-- Button Row -->
+<div class="bottom-buttons">
+  <button class="action-btn" id="hiddenBtn">🔒 HIDDEN</button>
+<button class="action-btn" id="favouritesBtn">❤️ FAVOURITES</button>
+<button class="action-btn" id="deletedBtn">🗑️ Recently Deleted</button>
+</div>
+
+    <!-- Image View -->
+    <section class="images hidden" id="imageView">
+      <button id="backToFolders">← Back to Folders</button>
+      <div class="image-grid" id="imageGrid">
+        <!-- Images will load here -->
+      </div>
+    </section>
+    <!-- 🔍 Full Image Preview Section -->
+<div id="imagePreview" class="hidden">
+  <img id="previewImg" src="" alt="Preview" />
+  <div class="preview-icons">
+    <span class="icon" id="previewHide">🔒</span>
+    <span class="icon" id="previewFav">🤍</span>
+    <span class="icon" id="previewDelete">🗑️</span>
+  </div>
+</div>
+  <!-- Password Modal for Hidden Images -->
+<div id="passwordModal" class="modal hidden">
+  <div class="modal-content">
+    <h3>Enter Secret Code</h3>
+    <input type="password" id="passwordInput" placeholder="Enter Code">
+    <div class="modal-buttons">
+      <button id="passwordSubmit">Submit</button>
+      <button id="passwordCancel">Cancel</button>
+    </div>
+  </div>
+</div>
+<!-- 🔒 Hidden Images Section -->
+<section class="images hidden" id="hidden-section">
+  <button id="backToFoldersFromHidden">← Back to Folders</button>
+  <div class="image-grid" id="hiddenGrid">
+    <!-- Hidden images will appear here -->
+  </div>
+</section>
+<div id="hiddenFolderSection"></div>
+<!-- 🗑️ Recently Deleted Section -->
+<section class="images hidden" id="deletedSection">
+  <button id="backFromDeleted">← Back to Folders</button>
+  <div class="image-grid" id="deletedGrid">
+    <!-- Deleted images will appear here -->
+  </div>
+</section>
+
+</body>
+
+  </main>
+</body>
+</html>
